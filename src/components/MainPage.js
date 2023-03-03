@@ -3,16 +3,13 @@ import Body from "./Body";
 import Stack from "../sdk/cstack";
 import {useState, useEffect} from "react";
 import { onEntryChange } from "../sdk/utils.js";
-import ContentstackLivePreview from "@contentstack/live-preview-utils";
-const contentstack = require("contentstack");
 
 function MainPage(){
     const [entry, setEntry] = useState({});
 
     async function getEntry(){
-        let theEntry = await Stack.getMainPage();
+        let theEntry = await Stack.getElement('blt7c5ea8ef2fe3ec39', 'mainpage');
         setEntry(theEntry); 
-        //console.log(theEntry);
     }
 
     useEffect(() => {

@@ -4,9 +4,14 @@ import Stack from "../sdk/cstack";
 import {useState, useEffect} from "react";
 import { onEntryChange } from "../sdk/utils.js";
 
-function SideBar(props) {
+function SideBar({setPage, nav_items}) {
     let navItems = [];
-    console.log('props', props);
+    //console.log('props', nav_items);
+    let props = {nav_items}
+
+    function changePage(event){
+        setPage(event.target.getAttribute('data-page'));
+    }
 
     if(props.nav_items){
         props.nav_items.nav_section.forEach((section) => {
@@ -21,7 +26,7 @@ function SideBar(props) {
             section.nav_item.forEach((item) => {
                 navItems.push(
                     <li className="nav-item" key={item.label}>
-                        <a className="nav-link" aria-current="page" href="#" {...item.$.label}>
+                        <a className="nav-link" aria-current="page" data-page={item.reference[0].uid} onClick={changePage} {...item.$.label}>
                             <span data-feather="home" className="align-text-bottom"></span>
                             {item.label}
                         </a>
