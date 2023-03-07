@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
-import Stack from "../sdk/cstack";
-import { onEntryChange } from "../sdk/utils.js";
+import Stack, {onEntryChange} from "../sdk/cstack";
+import Headline from "./elements/Headline";
 
 function Page(props){
     const [entry, setEntry] = useState({});
@@ -13,14 +13,26 @@ function Page(props){
     useEffect(() => {
         if(!props.pageId)
             return;
-        getEntry();
 
         onEntryChange(getEntry);
     }, [props.pageId]);
 
+    let content = [];
+    if(entry.content_blocks){
+        entry.content_blocks.forEach(item => {
+            if('headline' in item){
+                content.push(<Headline options={item.headline} key={item.headline.text}/>);
+            } 
+            else if('text_block' in item){
+
+            }
+        })
+    }
+    console.log(content);    
+
     return (
-        <div>
-            <h1>{entry.title}</h1>
+        <div className="mt-3">
+            {content}
         </div>
     )
 }

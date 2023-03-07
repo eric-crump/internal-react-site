@@ -1,8 +1,7 @@
 import Header from "./Header";
 import Body from "./Body";
-import Stack from "../sdk/cstack";
+import Stack, {onEntryChange} from "../sdk/cstack";
 import {useState, useEffect} from "react";
-import { onEntryChange } from "../sdk/utils.js";
 
 function MainPage(){
     const [entry, setEntry] = useState({});
@@ -13,14 +12,9 @@ function MainPage(){
     }
 
     useEffect(() => {
-        getEntry();
-
         onEntryChange(getEntry);
     }, []);
     
-    /*useEffect(() => {
-        onEntryChange(getEntry);
-    }, []);*/
 
     return (
         <div>

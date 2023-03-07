@@ -1,16 +1,22 @@
 import SideBar from "./SideBar";
 import Page from "./Page";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Body(props) {
     const [page, setPage] = useState('');
-
-    return (
+    
+    let pageId;
+    if(props?.content?.landing_page && !page)
+        pageId = props.content.landing_page[0].uid;
+    else
+        pageId = page;
+    
+    return ( 
         <div className="container-fluid">
             <div className="row">
                 <SideBar setPage={setPage} nav_items={props?.content?.nav}/>
                 <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                        <Page pageId={page}/>
+                        <Page pageId={pageId}/>
                 </main> 
             </div>
         </div>

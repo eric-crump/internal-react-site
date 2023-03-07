@@ -2,7 +2,6 @@ import "./css/sidebar.css";
 
 import Stack from "../sdk/cstack";
 import {useState, useEffect} from "react";
-import { onEntryChange } from "../sdk/utils.js";
 
 function SideBar({setPage, nav_items}) {
     let navItems = [];

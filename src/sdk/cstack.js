@@ -15,9 +15,6 @@ const Stack = Contentstack.Stack({
 
 ContentstackLivePreview.init({
   stackSdk: Stack,
-  stackDetails: {
-    apiKey: "bltf9a71e4780fdf6ee",
-  },
   clientUrlParams: {
       protocol: "https",
       host: "app.contentstack.com",
@@ -50,3 +47,5 @@ export default {
     return Stack;
   }
 };
+
+export const onEntryChange = ContentstackLivePreview.onEntryChange;
